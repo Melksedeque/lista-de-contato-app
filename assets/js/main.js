@@ -41,26 +41,22 @@ function showContactModal(contato) {
     modal.style.display = 'block'
 }
 
-// Realizar a requisição para obter a lista de contatos da API
 fetch(url)
     .then(resposta => {
         if(!resposta.ok) {
-            console.log("Erro ao ler a API")
+            throw new Error("Erro ao ler a API")
         }
-        resposta.json()
+        return response.json()
     })
     .then(dados => {
-        // Armazenar a lista de contatos
-        const contacts = dados
+        const contatos = dados
 
-    // Exibir os contatos iniciais
-    displayContacts(contacts)
+        displayContacts(contatos)
 
-    // Adicionar listener para a barra de busca
-    const searchInput = document.getElementById('searchInput')
-        searchInput.addEventListener('input', (event) => {
-        const query = event.target.value
-        searchContacts(query)
+        const searchInput = document.getElementById('searchInput')
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value
+            pesquisaContatos(query)
+        })
     })
-})
-.catch(error => console.log('Erro ao obter os contatos:', error));
+    .catch(erro => console.log('Erro ao obter os contatos: ', erro))
