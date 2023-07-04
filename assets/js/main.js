@@ -1,6 +1,15 @@
 const timestamp = Date.now()
 const url = `https://dummyjson.com/users?timestamp=${timestamp}`
 
+function smoothScroll(letra) {
+    const listaContato = document.getElementById('listaContato')
+    const letraContato = listaContato.querySelector(`li:first-child:nth-of-type(n+${letra})`)
+  
+    if (letraContato) {
+        letraContato.scrollIntoView({ behavior: 'smooth' })
+    }
+}
+
 function pesquisaContatos(query) {
     const contatosFiltrados = contatos.filter(contato =>
         contato.name.toLowerCase().includes(query.toLowerCase()) ||
@@ -10,11 +19,13 @@ function pesquisaContatos(query) {
     exibeContatos(contatosFiltrados)
 }
 
-function exibeContatos(infos) {
+function exibeContatos(infoContatos) {
     const listaContatos = document.getElementById('listaContatos')
     listaContatos.innerHTML = ''
 
-    infos.forEach(contato => {
+    const alfabeto = {}
+
+    infoContatos.forEach(contato => {
         const contatoItem = document.createElement('li')
         contatoItem.textContent = `${contato.name} (${contato.email})`
 
@@ -22,11 +33,26 @@ function exibeContatos(infos) {
             popupContato(contato)
         })
 
-      listaContatos.appendChild(contatoItem)
+        listaContatos.appendChild(contatoItem)
+
+        const letraInicial = contato.name.charAt(0).toUpperCase()
+
+        if (!alfabeto[letraInicial]) {
+            alfabeto[letraInicial] = true;
+
+            const linkLetra = document.createElement('a');
+            linkLetra.textContent = letraInicial;
+
+            linkLetra.addEventListener('click', () => {
+                smoothScroll(letraInicial);
+            });
+
+            document.getElementById('alfabeto').appendChild(linkLetra);
+        }
     })
 }
 
-function showContactModal(contato) {
+function popupContato(contato) {
     const modal = document.getElementById('modal')
     const detalheNome = document.getElementById('detalheNome')
     const detalheEmail = document.getElementById('detalheEmail')
@@ -42,16 +68,16 @@ function showContactModal(contato) {
 }
 
 fetch(url)
-    .then(resposta => {
-        if(!resposta.ok) {
+    .then(response => {
+        if(!response.ok) {
             throw new Error("Erro ao ler a API")
         }
         return response.json()
     })
-    .then(dados => {
-        const contatos = dados
+    .then(data => {
+        const infoContatos = data
 
-        displayContacts(contatos)
+        exibeContatos(infoContatos)
 
         const searchInput = document.getElementById('searchInput')
         searchInput.addEventListener('input', (e) => {
@@ -59,4 +85,4 @@ fetch(url)
             pesquisaContatos(query)
         })
     })
-    .catch(erro => console.log('Erro ao obter os contatos: ', erro))
+    .catch(error => console.log('Erro ao obter os contatos: ', error))
