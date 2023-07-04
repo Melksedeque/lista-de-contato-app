@@ -12,7 +12,7 @@ function smoothScroll(letra) {
 
 function pesquisaContatos(query) {
     const contatosFiltrados = contatos.filter(contato =>
-        contato.name.toLowerCase().includes(query.toLowerCase()) ||
+        contato.firstName.toLowerCase().includes(query.toLowerCase()) ||
         contato.email.toLowerCase().includes(query.toLowerCase())
     )
 
@@ -25,9 +25,11 @@ function exibeContatos(infoContatos) {
 
     const alfabeto = {}
 
+    infoContatos.sort((a, b) => a.firstName.localeCompare(b.firstName))
+
     infoContatos.forEach(contato => {
         const contatoItem = document.createElement('li')
-        contatoItem.textContent = `${contato.name} (${contato.email})`
+        contatoItem.textContent = `${contato.firstName} ${contato.lastName} (${contato.email})`
 
         contatoItem.addEventListener('click', () => {
             popupContato(contato)
@@ -35,19 +37,19 @@ function exibeContatos(infoContatos) {
 
         listaContatos.appendChild(contatoItem)
 
-        const letraInicial = contato.name.charAt(0).toUpperCase()
+        const letraInicial = contato.firstName.charAt(0).toUpperCase()
 
         if (!alfabeto[letraInicial]) {
-            alfabeto[letraInicial] = true;
+            alfabeto[letraInicial] = true
 
-            const linkLetra = document.createElement('a');
-            linkLetra.textContent = letraInicial;
+            const linkLetra = document.createElement('a')
+            linkLetra.textContent = letraInicial
 
             linkLetra.addEventListener('click', () => {
-                smoothScroll(letraInicial);
-            });
+                smoothScroll(letraInicial)
+            })
 
-            document.getElementById('alfabeto').appendChild(linkLetra);
+            document.getElementById('alfabeto').appendChild(linkLetra)
         }
     })
 }
@@ -59,7 +61,7 @@ function popupContato(contato) {
     const detalheTelefone = document.getElementById('detalheTelefone')
     const detalheEndereco = document.getElementById('detalheEndereco')
 
-    detalheNome.textContent = contato.name
+    detalheNome.textContent = `${contato.firstName} ${contato.lastName}`
     detalheEmail.textContent = `E-mail: ${contato.email}`
     detalheTelefone.textContent = `Telefone: ${contato.phone}`
     detalheEndereco.textContent = `Endereço: ${contato.address.street}, ${contato.address.city}, ${contato.address.zipcode}`
@@ -75,9 +77,9 @@ fetch(url)
         return response.json()
     })
     .then(data => {
-        const infoContatos = data
+        const contatos = data
 
-        exibeContatos(infoContatos)
+        exibeContatos(contatos.users)
 
         const searchInput = document.getElementById('searchInput')
         searchInput.addEventListener('input', (e) => {
