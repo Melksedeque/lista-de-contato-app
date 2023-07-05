@@ -1,0 +1,21 @@
+footer.site-footer {
+    background-color: #3D3D3D;
+    bottom: 0;
+    padding: 10px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    p {
+        color: white;
+        font: 300 12px $fonte;
+        a {
+            border-bottom: 1px solid red;
+            color: red;
+            text-decoration: none;
+            transition: all .25s ease;
+            &:hover {
+                border-bottom: 0px solid transparent;
+            }
+        }
+    }
+}
