@@ -1,0 +1,18 @@
+section.site-content {
+    background-color: white;
+    display: block;
+    height: 600px;
+    margin: 0 auto;
+    overflow: auto;
+    padding: 20px;
+    width: 400px;
+    form.busca {
+        svg {
+            background-color: #EFEFEF;
+        }
+        input {
+            background-color: #EFEFEF;
+            border: 0 none;
+        }
+    }
+}
