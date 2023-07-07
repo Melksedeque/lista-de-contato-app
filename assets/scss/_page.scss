@@ -16,23 +16,25 @@ section.site-content {
         }
     }
     div.letras {
-        align-items: center;
+        align-content: stretch;
+        align-items: stretch;
         display: flex;
         flex-flow: row nowrap;
-        gap: 5px;
+        gap: 10px;
         justify-content: flex-start;
         margin: 20px -15px;
         overflow-x: auto;
         a {
+            background-color: red;
+            border-radius: 100px;
             cursor: pointer;
-            flex: 1 1 20px;
-            font: 400 18px $fonte;
-            height: 50px;
-            padding: 10px 20px;
-            width: 52px;
+            flex: 0 1 auto;
+            font: 400 18px/28px $fonte;
+            min-height: 50px;
+            min-width: 50px;
+            padding: 10px 0;
+            text-align: center;
             &:hover {
-                background-color: #EFEFEF;
-                border-radius: 100px;
             }
         }
     }
