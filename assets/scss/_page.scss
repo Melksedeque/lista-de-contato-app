@@ -15,4 +15,23 @@ section.site-content {
             border: 0 none;
         }
     }
+    div.letras {
+        align-items: center;
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 5px;
+        justify-content: flex-start;
+        margin: 20px -15px;
+        overflow-x: auto;
+        a {
+            cursor: pointer;
+            flex: 1 1 20px;
+            font: 400 18px $fonte;
+            padding: 10px 20px;
+            &:hover {
+                background-color: #EFEFEF;
+                border-radius: 100px;
+            }
+        }
+    }
 }
