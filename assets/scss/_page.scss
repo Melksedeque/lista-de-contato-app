@@ -27,7 +27,9 @@ section.site-content {
             cursor: pointer;
             flex: 1 1 20px;
             font: 400 18px $fonte;
+            height: 50px;
             padding: 10px 20px;
+            width: 52px;
             &:hover {
                 background-color: #EFEFEF;
                 border-radius: 100px;
