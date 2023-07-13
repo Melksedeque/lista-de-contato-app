@@ -29,7 +29,8 @@ function exibeContatos(infoContatos) {
 
     infoContatos.forEach(contato => {
         const contatoItem = document.createElement('li')
-        contatoItem.textContent = `${contato.firstName} ${contato.lastName} (${contato.email})`
+
+        contatoItem.innerHTML = `<figure><img src="${contato.image}" class="img-contato"><figcaption>${contato.firstName} ${contato.lastName}<br><small>(${contato.email})</small></figcaption></figure>`
 
         contatoItem.addEventListener('click', () => {
             popupContato(contato)
@@ -56,11 +57,13 @@ function exibeContatos(infoContatos) {
 
 function popupContato(contato) {
     const modal = document.getElementById('modal')
+    const detalheFoto = document.getElementById('detalheFoto')
     const detalheNome = document.getElementById('detalheNome')
     const detalheEmail = document.getElementById('detalheEmail')
     const detalheTelefone = document.getElementById('detalheTelefone')
     const detalheEndereco = document.getElementById('detalheEndereco')
 
+    detalheFoto.innerHTML = `<img src="${contato.image}" alt="${contato.firstName} ${contato.lastName}">`
     detalheNome.textContent = `${contato.firstName} ${contato.lastName}`
     detalheEmail.textContent = `E-mail: ${contato.email}`
     detalheTelefone.textContent = `Telefone: ${contato.phone}`
