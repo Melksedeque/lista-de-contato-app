@@ -67,7 +67,7 @@ function popupContato(contato) {
     detalheNome.textContent = `${contato.firstName} ${contato.lastName}`
     detalheEmail.textContent = `E-mail: ${contato.email}`
     detalheTelefone.textContent = `Telefone: ${contato.phone}`
-    detalheEndereco.textContent = `Endereço: ${contato.address.street}, ${contato.address.city}, ${contato.address.zipcode}`
+    detalheEndereco.textContent = `Endereço: ${contato.address.address}, ${contato.address.city}, ${contato.address.state}, ${contato.address.postalCode}`
 
     modal.style.display = 'block'
 }
