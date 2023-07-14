@@ -121,20 +121,26 @@ section.site-content {
         cursor: pointer;
         font-size: 25px;
         float: right;
+        opacity: .5;
         position: relative;
+        transition: all .25s ease;
         z-index: 10;
+        &:hover {
+            color: red;
+            opacity: 1;
+        }
     }
     figure {
         background-color: #48A7FF22;
         border: 1px solid #48A7FF;
         border-radius: 100%;
-        height: 300px;
+        height: 250px;
         margin: 0 auto 20px;
         overflow: hidden;
         text-align: center;
-        width: 300px;
+        width: 250px;
         img {
-            max-width: 300px;
+            max-width: 250px;
         }
     }
     h2 {
@@ -143,7 +149,29 @@ section.site-content {
         text-align: center;
     }
     p {
-        margin: 10px 0;
+        a {
+            align-items: center;
+            color: black;
+            display: flex;
+            flex-flow: row wrap;
+            margin: 10px 0;
+            text-decoration: none;
+            transition: all .25s ease;
+            svg {
+                color: #48A7FF;
+                font-size: 20px;
+                flex: 0 1 15%;
+                transition: all .25s ease;
+            }
+            span {
+                line-height: 22px;
+            }
+            &:hover {
+                svg {
+                    color: red;
+                }
+            }
+        }
     }
     &.fade {
         opacity: 1;
