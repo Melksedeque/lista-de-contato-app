@@ -57,6 +57,7 @@ function exibeContatos(infoContatos) {
 
 function popupContato(contato) {
     const modal = document.getElementById('modal')
+    const btnFechar = document.getElementById('fecharPopup')
     const detalheFoto = document.getElementById('detalheFoto')
     const detalheNome = document.getElementById('detalheNome')
     const detalheEmail = document.getElementById('detalheEmail')
@@ -69,12 +70,11 @@ function popupContato(contato) {
     detalheTelefone.textContent = `Telefone: ${contato.phone}`
     detalheEndereco.textContent = `Endereço: ${contato.address.address}, ${contato.address.city}, ${contato.address.state}, ${contato.address.postalCode}`
 
-    modal.style.display = 'flex'
-}
+    modal.classList.add('fade')
 
-function fecharPopup() {
-    const btnFechar = document.getElementById('fecharPopup')
-    
+    btnFechar.addEventListener('click', () => {
+        modal.classList.remove('fade')
+    })
 }
 
 fetch(url)
