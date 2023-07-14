@@ -66,9 +66,9 @@ function popupContato(contato) {
 
     detalheFoto.innerHTML = `<img src="${contato.image}" alt="${contato.firstName} ${contato.lastName}">`
     detalheNome.textContent = `${contato.firstName} ${contato.lastName}`
-    detalheEmail.textContent = `E-mail: ${contato.email}`
-    detalheTelefone.textContent = `Telefone: ${contato.phone}`
-    detalheEndereco.textContent = `Endereço: ${contato.address.address}, ${contato.address.city}, ${contato.address.state}, ${contato.address.postalCode}`
+    detalheEmail.innerHTML = `<a href="mailto:${contato.email}" target="_blank"><i class="fas fa-envelope"></i><span>${contato.email}</span></a>`
+    detalheTelefone.innerHTML = `<a href="tel:${contato.phone}" target="_blank"><i class="fas fa-phone"></i><span>${contato.phone}</span></a>`
+    detalheEndereco.innerHTML = `<a href="https://www.google.com.br/maps/place/${contato.address.address}+${contato.address.city}+${contato.address.state}+${contato.address.postalCode}" target="_blank"><i class="fas fa-map-marker-alt"></i><span>${contato.address.address}<br>${contato.address.city}, ${contato.address.state}, ${contato.address.postalCode}</span></a>`
 
     modal.classList.add('fade')
 
