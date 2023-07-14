@@ -101,14 +101,17 @@ section.site-content {
 
 .popup {
     background-color: #FFFFFF;
-    display: none;
+    display: flex;
     flex-flow: column nowrap;
     height: 100%;
     left: 50%;
+    opacity: 0;
     padding: 10px 20px;
     position: absolute;
     top: 50%;
     transform: translate(-50%, -50%);
+    transition: all .5s ease-in-out;
+    visibility: hidden;
     width: 100%;
     button {
         align-self: flex-end;
@@ -141,5 +144,9 @@ section.site-content {
     }
     p {
         margin: 10px 0;
+    }
+    &.fade {
+        opacity: 1;
+        visibility: visible;
     }
 }
