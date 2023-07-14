@@ -69,7 +69,12 @@ function popupContato(contato) {
     detalheTelefone.textContent = `Telefone: ${contato.phone}`
     detalheEndereco.textContent = `Endereço: ${contato.address.address}, ${contato.address.city}, ${contato.address.state}, ${contato.address.postalCode}`
 
-    modal.style.display = 'block'
+    modal.style.display = 'flex'
+}
+
+function fecharPopup() {
+    const btnFechar = document.getElementById('fecharPopup')
+    
 }
 
 fetch(url)
