@@ -62,6 +62,7 @@ function exibeContatos(infoContatos) {
         
 function popupContato(contato) {
     const modal = document.getElementById('modal')
+    const conteudo = document.getElementById('conteudo')
     const btnFechar = document.getElementById('fecharPopup')
     const detalheFoto = document.getElementById('detalheFoto')
     const detalheNome = document.getElementById('detalheNome')
@@ -76,9 +77,11 @@ function popupContato(contato) {
     detalheEndereco.innerHTML = `<a href="https://www.google.com.br/maps/place/${contato.address.address}+${contato.address.city}+${contato.address.state}+${contato.address.postalCode}" target="_blank"><i class="fas fa-map-marker-alt"></i><span>${contato.address.address}<br>${contato.address.city}, ${contato.address.state}, ${contato.address.postalCode}</span></a>`
     
     modal.classList.add('fade')
+    conteudo.classList.add('modal-open')
     
     btnFechar.addEventListener('click', () => {
         modal.classList.remove('fade')
+        conteudo.classList.remove('modal-open')
     });
 }
         
